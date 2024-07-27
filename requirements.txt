@@ -1,0 +1,13 @@
+pyaudio
+google-cloud-speech
+google-cloud-texttospeech
+pocketsphinx
+requests
+yfinance
+google-auth
+google-auth-oauthlib
+google-api-python-client
+dateparser
+spotipy
+Flask
+google-auth-httplib2

@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "electric-vault-422210-v1",
+  "private_key_id": "6c6834f086640c5d936a6d0c8b0698925e15864e",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQC4AqEG8fqlrL3g\n5pY8IBKlqLzhXt4oizyEvozNsCBEp20d9RyT+6wfqcJEw+7pkytsfZouFc12sEig\n+itu6gjaSd2JTK6xYedsYkVDTBrMf3V+GLZrMTzJQVSKHF7pG4TZaPZJDgxnNQXl\nkD5B/y2CyRRKyzNlGhIRBz0zbbqloYWFV7UT1Vni8pUMXXPwXFQfbtugTQiliHQu\nBbaQJOUy6xc6e/pntZa2+MvuZyEPVOs8tUGcy453L17LUDeWT01ASasuZmlHy7Xy\nbG5476Wo9mWQo0Reqw3AobAhUNPJvTNho7nudzdl1hBWkaYv1nIefzlrCQsGQs1Q\nH9EOXBpfAgMBAAECggEACD2d5oi5t+e3jTXmboTlMOQQqWstOdWafTtnZOLJXym8\nWkYa5Im12KkqmRfJQE6l+DLbz8qMLA+TARqTDWGPye7a7AYyIKGI0rLH9U6YOKZQ\npbgHm19WIJE7bv/8RCZGWdI4jWcCqTCXtgMytpPt/thwfzUAdTuoqXiQhhgY7sfs\nbbYeagBpiW0fzS3yQbWW3I7keqNZupYB6i1Gu/6hqWW1CQAF+DlKv0hews3KEQJ4\nGqKkwJLmWxn7qn9NJQhFQpqtnO7QH6lbNxez85F+a28JU98jmtmpIs35yhYJK/vk\nAsTa7pN5PSwkLRj16LdPElLModpVAFCIzFspFbW7iQKBgQD3sTnMBmfrcIVa2W9C\nY6so0xJBRgsCRL9PtI+P5CYguaby8iLIXQRLC60jFLtP1HmUYdWJIL3/BUmlF+K8\nUK6CcqhtllBEDAAIp0Te0WpynYzBSFOLp1etHrX4KvajDpD17PCCtuzI0oex5JnB\nYd0a8jNgn8+uIkyMOI5WSQ5ZWwKBgQC+LptTipuc3SFSxPbKZQTahEsRXayqtkmU\nGqIeiVXu8ukLA2/gSsddlkO37LmcIOeguVCkDi6fwWpTK/kR4JZjGxbivdEloNhs\nGUUgPymduY67fem3UkxQR/vj6tqlyGzfdX8rZ3pmJUjX7R2S18+qlyfqLny2POIC\nNrXmgKzOTQKBgQDPMhttBjbMBjYnhxfA62r0HYx5ucPfw+5dGGe3MFyMp4B2XgKm\npNjAhiXw4JjH8K87ZpOfwBnvSFcQmWh7quowCQXHliPSqE8m7fV4hqmK8ywZSw1I\nF1YKZVRHInlqcPbmIawXTDnKzAHi152e3OR+c/hybXzm554s9eprV3V/XQKBgGhG\n6cfOsjA6VzEo6iBjb1vZOcfV0vzvYjygtc+Egee4rOrrAYa7ucCoyYypccQXjqlj\nssGhPRM/W+sqqzCQMiU5Dz1X0ruNC92JpYte1pSyz34iNencaBeEwKphdW19DaUg\nqY/E9ynWu7AZRSPkzOq+YpZW0u6hR1LraKVwXE/pAoGAdkdPLnntn+ra4CjUPMUZ\nPq674xi5iJzSwZuUnKEmxaS1mkygCQYRpBoQOfNufc18xqUPShAFRfoNOVnbZUxq\nVh3X9b+qLec02y3n/5DosqZr8fmPMpVkcP685uLrfgbTEe7J5MbjmH/zfFftDA7Z\nxSpgKeEawI71iT2cxiboDPc=\n-----END PRIVATE KEY-----\n",
+  "client_email": "soumya@electric-vault-422210-v1.iam.gserviceaccount.com",
+  "client_id": "117420533861462371497",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/soumya%40electric-vault-422210-v1.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}

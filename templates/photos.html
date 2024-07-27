@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Photos</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
+</head>
+<body>
+    <div class="navbar">
+        <a href="{{ url_for('index') }}">Home</a>
+    </div>
+    <div class="container">
+        {% for date, items in grouped_photos.items() %}
+            <h2 data-date="{{ date }}">{{ date }}</h2>
+            <div class="grid">
+                {% for item in items %}
+                    <div class="grid-item" data-fullsize="{{ item.baseUrl }}" data-metadata='{{ item.mediaMetadata | tojson }}'>
+                        <img src="{{ item.baseUrl }}=w200-h200" alt="Photo">
+                    </div>
+                {% endfor %}
+            </div>
+        {% endfor %}
+    </div>
+
+    <div id="myModal" class="modal">
+        <span class="close">&times;</span>
+        <div class="modal-content">
+            <img id="modal-image" src="">
+            <div id="modal-metadata" class="metadata"></div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            let modal = document.getElementById("myModal");
+            let modalImg = document.getElementById("modal-image");
+            let modalMetadata = document.getElementById("modal-metadata");
+            let closeBtn = document.getElementsByClassName("close")[0];
+
+            document.querySelectorAll('.grid-item img').forEach(img => {
+                img.onclick = function() {
+                    modal.style.display = "block";
+                    modalImg.src = this.parentElement.getAttribute('data-fullsize');
+                    let metadata = JSON.parse(this.parentElement.getAttribute('data-metadata'));
+                    modalMetadata.innerHTML = `
+                        <p><strong>Creation Time:</strong> ${metadata.creationTime}</p>
+                        <p><strong>Width:</strong> ${metadata.width}</p>
+                        <p><strong>Height:</strong> ${metadata.height}</p>
+                    `;
+                    if (metadata.photo) {
+                        if (metadata.photo.cameraMake) {
+                            modalMetadata.innerHTML += `<p><strong>Camera Make:</strong> ${metadata.photo.cameraMake}</p>`;
+                        }
+                        if (metadata.photo.cameraModel) {
+                            modalMetadata.innerHTML += `<p><strong>Camera Model:</strong> ${metadata.photo.cameraModel}</p>`;
+                        }
+                        if (metadata.photo.focalLength) {
+                            modalMetadata.innerHTML += `<p><strong>Focal Length:</strong> ${metadata.photo.focalLength}</p>`;
+                        }
+                        if (metadata.photo.apertureFNumber) {
+                            modalMetadata.innerHTML += `<p><strong>Aperture:</strong> ${metadata.photo.apertureFNumber}</p>`;
+                        }
+                        if (metadata.photo.isoEquivalent) {
+                            modalMetadata.innerHTML += `<p><strong>ISO:</strong> ${metadata.photo.isoEquivalent}</p>`;
+                        }
+                        if (metadata.photo.exposureTime) {
+                            modalMetadata.innerHTML += `<p><strong>Exposure Time:</strong> ${metadata.photo.exposureTime}</p>`;
+                        }
+                    }
+                }
+            });
+
+            closeBtn.onclick = function() {
+                modal.style.display = "none";
+            }
+
+            window.onclick = function(event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            }
+
+            // Initialize Masonry
+            var grid = document.querySelector('.grid');
+            var msnry = new Masonry(grid, {
+                itemSelector: '.grid-item',
+                columnWidth: '.grid-item',
+                percentPosition: true
+            });
+
+            // Implement lazy loading
+            let nextPageToken = '{{ nextPageToken }}';
+
+            window.addEventListener('scroll', function() {
+                if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+                    loadMorePhotos();
+                }
+            });
+
+            function loadMorePhotos() {
+                if (!nextPageToken) return;
+
+                fetch('/load_more_photos', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ pageToken: nextPageToken })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.items) {
+                        appendPhotos(data.items);
+                        nextPageToken = data.nextPageToken;
+                    }
+                })
+                .catch(error => console.error('Error loading more photos:', error));
+            }
+
+            function appendPhotos(items) {
+                items.forEach(item => {
+                    let date = new Date(item.mediaMetadata.creationTime).toISOString().split('T')[0];
+                    let dateSection = document.querySelector(`h2[data-date='${date}']`);
+                    if (!dateSection) {
+                        dateSection = document.createElement('h2');
+                        dateSection.setAttribute('data-date', date);
+                        dateSection.innerText = date;
+                        document.querySelector('.container').appendChild(dateSection);
+                        let grid = document.createElement('div');
+                    grid.className = 'grid';
+                    document.querySelector('.container').appendChild(grid);
+                }
+                let grid = dateSection.nextElementSibling;
+
+                let gridItem = document.createElement('div');
+                gridItem.className = 'grid-item';
+                gridItem.setAttribute('data-fullsize', item.baseUrl);
+                gridItem.setAttribute('data-metadata', JSON.stringify(item.mediaMetadata));
+                let img = document.createElement('img');
+                img.src = `${item.baseUrl}=w200-h200`;
+                img.alt = 'Photo';
+                gridItem.appendChild(img);
+                grid.appendChild(gridItem);
+
+                // Reinitialize Masonry
+                msnry.appended(gridItem);
+                msnry.layout();
+            });
+        }
+    });
+</script>
+</body> 
+</html>

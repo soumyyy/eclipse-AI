@@ -1,0 +1,16 @@
+# Python
+*.pyc
+__pycache__/
+photosapp.py
+simple_app.py
+
+# Environment variables
+.env
+
+# Virtual environment
+
+# Logs
+*.log
+
+# Data files
+*.csv
