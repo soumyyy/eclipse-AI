@@ -1,16 +1,21 @@
 # Python
 *.pyc
 __pycache__/
-photosapp.py
-simple_app.py
+photosapp.py/
+simple_app.py/
+config.py/
 
 # Environment variables
-.env
+# .env
 
 # Virtual environment
 
 # Logs
-*.log
+# *.log
 
 # Data files
-*.csv
+# *.csv
+
+# json
+client_secret_303100921412-om16i2c8j2t4ug1lm8s15hms8adbhl3n.apps.googleusercontent.com.json/
+client_secret_303100921412-s9il8etjmsfdokq6klmb511drifr2kob.apps.googleusercontent.com.json/

@@ -1,0 +1,2 @@
+SECRET_KEY = '2ae0114da2e6db32406be1c0a76a3ba2235ab05da18d05ee'
+CLIENT_SECRETS_FILE = 'client_secret_303100921412-om16i2c8j2t4ug1lm8s15hms8adbhl3n.apps.googleusercontent.com.json'
